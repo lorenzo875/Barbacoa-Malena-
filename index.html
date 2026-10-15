@@ -69,7 +69,8 @@ p{margin:0}
 .btn-wa[aria-disabled="true"]{cursor:not-allowed}
 .btn-linea{border-color:rgba(238,230,216,.28);color:var(--hueso)}
 .btn-linea:hover{border-color:var(--hueso);background:rgba(238,230,216,.05)}
-.btn-chico{min-height:42px;padding:.7rem 1.1rem;font-size:.88rem}
+.btn-chico{min-height:46px;width:46px;padding:0;border-radius:50%}
+.btn-chico svg{width:22px;height:22px}
 
 /* ---------- hero ---------- */
 .hero{position:relative;isolation:isolate;overflow:hidden}
@@ -702,7 +703,7 @@ window.NEGOCIO = {
 
   var wa = N.whatsapp ? 'https://wa.me/' + N.whatsapp + '?text=' + encodeURIComponent(N.mensajeWhatsApp) : null;
   $$('[data-wa]').forEach(function(a){
-    a.innerHTML = waIcon + (a.hasAttribute('data-corto') ? 'Pedir' : 'Pedir por WhatsApp');
+    a.innerHTML = waIcon + (a.hasAttribute('data-corto') ? '' : 'Pedir por WhatsApp'); if (a.hasAttribute('data-corto')) a.setAttribute('aria-label', 'WhatsApp');
     if (wa) a.href = wa; else { a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); a.title = 'Número de WhatsApp por confirmar'; }
   });
   $('#wa-numero').innerHTML = N.whatsapp ? 'WhatsApp: <strong style="user-select:all;color:var(--hueso)">+' + esc(N.whatsapp) + '</strong>' : 'WhatsApp: ' + PEND;
